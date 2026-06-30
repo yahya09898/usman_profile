@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Palette synced from D:\Usman_Website\index.html :root */
+  --background: #0d0d0d;          /* was #ffffff — site is dark like the source */
+  --foreground: #f0f0f0;          /* was #0d0d0d — text color */
+  --dark:      #0d0d0d;
+  --dark2:     #141414;
+  --dark3:     #1c1c1c;
+  --text:      #f0f0f0;
+  --muted:     #888888;
+
+  --brand-purple:  #5201cc;       /* primary accent */
+  --brand-magenta: #a5009d;       /* secondary accent */
+  --brand-cyan:    #00b6ba;       /* teal */
+  --brand-cyan-dark: #009095;
+  --brand-pink:    #e781e0;       /* soft accent */
+  --brand-crimson: #ac243c;
+  --brand-coral:   #e75343;
+  --brand-orange:  #f89636;       /* stars / highlights */
+
+  /* legacy aliases kept so existing components don't break */
+  --brand-black:    var(--dark);
+  --brand-ink:      var(--dark3);
+  --brand-gray:     #434343;
+  --brand-midgray:  var(--muted);
+  --brand-softgray: #A5A5A5;
+  --brand-sky:      var(--brand-cyan);
+  --brand-yellow:   var(--brand-orange);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-dark:      var(--dark);
+  --color-dark2:     var(--dark2);
+  --color-dark3:     var(--dark3);
+  --color-muted:     var(--muted);
+  --color-brand-purple:  var(--brand-purple);
+  --color-brand-magenta: var(--brand-magenta);
+  --color-brand-cyan:    var(--brand-cyan);
+  --color-brand-cyanDark: var(--brand-cyan-dark);
+  --color-brand-pink:    var(--brand-pink);
+  --color-brand-crimson: var(--brand-crimson);
+  --color-brand-coral:   var(--brand-coral);
+  --color-brand-orange:  var(--brand-orange);
+  --color-brand-black:   var(--brand-black);
+  --color-brand-ink:     var(--brand-ink);
+  --color-brand-gray:    var(--brand-gray);
+  --color-brand-midgray: var(--brand-midgray);
+  --color-brand-softgray: var(--brand-softgray);
+  --color-brand-sky:     var(--brand-sky);
+  --color-brand-yellow:  var(--brand-yellow);
+  --font-display: var(--font-unbounded), system-ui, sans-serif;
+  --font-body: var(--font-roboto), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-roboto), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+  font-family: var(--font-unbounded), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--brand-purple), var(--brand-magenta));
+  color: #fff;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-family: var(--font-unbounded), system-ui, sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 8px 32px rgba(82, 1, 204, 0.4);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(82, 1, 204, 0.5);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: var(--font-unbounded), system-ui, sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  background: transparent;
+}
+.btn-outline:hover {
+  border-color: var(--brand-cyan);
+  color: var(--brand-cyan);
+}
+
+.section-pad {
+  padding-top: clamp(4rem, 8vw, 8rem);
+  padding-bottom: clamp(4rem, 8vw, 8rem);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-unbounded), system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--brand-cyan);
+  margin-bottom: 1rem;
+}
+
+.headline-xl {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.headline-lg {
+  font-size: clamp(2rem, 5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.headline-md {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.15;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
 }

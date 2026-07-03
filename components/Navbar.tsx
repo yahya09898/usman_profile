@@ -9,6 +9,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
+  { href: "/team", label: "Team" },
   // { href: "/#projects", label: "Projects" },
   // { href: "/#reviews", label: "Reviews" },
   { href: "/contact", label: "Contact" },
@@ -32,7 +33,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-10 py-4">
         <Link href="/" className="flex items-center gap-2">
-          <img src="/images/Untitled-200-x-100-px.png" alt="The Creative Clowns" className="h-9 w-auto" />
+          <img src="/images/TCC_white_bg-removebg-preview (2).png" alt="The Creative Clowns" className="h-26 w-auto" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8 font-display text-sm uppercase tracking-wide text-white/80">

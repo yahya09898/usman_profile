@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
 const services = [
-  { title: "Digital Marketing", icon: "📈", desc: "End-to-end digital strategy, paid media, and funnel design that turns clicks into customers." },
-  { title: "Social Media Marketing", icon: "💬", desc: "Scroll-stopping content, community management, and ad campaigns on every platform that matters." },
-  { title: "Performance Marketing", icon: "🎯", desc: "ROI-obsessed paid acquisition across Google, Meta, TikTok, and LinkedIn — measured to the cent." },
-  { title: "Content Writing", icon: "✍️", desc: "SEO-friendly copy, brand storytelling, and editorial calendars that compound over time." },
-  { title: "Web Development", icon: "💻", desc: "Lightning-fast, conversion-tuned websites and web apps built on the modern stack." },
-  { title: "Designing", icon: "🎨", desc: "Brand systems, UI/UX, and motion design that look as good as they perform." },
-  { title: "SEO", icon: "🔍", desc: "Technical SEO, content strategy, and link building that earns rankings — and keeps them." },
+  { title: "Digital Marketing", desc: "End-to-end digital strategy, paid media, and funnel design that turns clicks into customers." },
+  { title: "Social Media Marketing", desc: "Scroll-stopping content, community management, and ad campaigns on every platform that matters." },
+  { title: "Performance Marketing",desc: "ROI-obsessed paid acquisition across Google, Meta, TikTok, and LinkedIn — measured to the cent." },
+  { title: "Content Writing", desc: "SEO-friendly copy, brand storytelling, and editorial calendars that compound over time." },
+  { title: "Web Development",desc: "Lightning-fast, conversion-tuned websites and web apps built on the modern stack." },
+  { title: "Designing",  desc: "Brand systems, UI/UX, and motion design that look as good as they perform." },
+  { title: "SEO", desc: "Technical SEO, content strategy, and link building that earns rankings — and keeps them." },
 ];
 
 export default function Services() {
@@ -42,7 +42,6 @@ export default function Services() {
               whileHover={{ y: -6 }}
               className="group relative p-7 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[var(--brand-cyan)]/60 transition-all duration-300"
             >
-              <div className="text-4xl mb-4">{s.icon}</div>
               <h3 className="font-display text-xl mb-3">{s.title}</h3>
               <p className="text-white/65 text-sm leading-relaxed">{s.desc}</p>
               <a

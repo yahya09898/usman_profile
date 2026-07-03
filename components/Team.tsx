@@ -2,17 +2,34 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from "./SocialIcons";
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from "./SocialIcons";
 
 const team = [
-  { name: "M Usman Khan", role: "Founder / CEO", img: "/images/Untitled-design-1.png", bio: "Vision-driven founder with 15+ years scaling brands across three continents." },
-  { name: "Dawood Mirza", role: "COO / CFO / CMO", img: "/images/1.png", bio: "Operations and growth mastermind keeping the engine running and the budget honest." },
-  { name: "M. Hasaan", role: "Creative Director", img: "/images/Untitled-design-2.png", bio: "Award-winning art director turning strategy into work people actually remember." },
+  {
+    name: "M Usman Khan",
+    bigTitle: "Founder",
+    subRole: "CEO",
+    footerRole: "Founder, CEO",
+    img: "/images/Untitled-design-1.png",
+  },
+  {
+    name: "Dawood Mirza",
+    bigTitle: "COO",
+    subRole: "CFO | CMO",
+    footerRole: "COO | CFO | CMO",
+    img: "/images/1.png",
+  },
+  {
+    name: "M. Hasaan",
+    bigTitle: "Director",
+    subRole: "",
+    footerRole: "Creative Director",
+    img: "/images/Untitled-design-2.png",
+  },
 ];
 
 export default function Team() {
-  // 1 = actively-hovered card index, null = none
-  const [active, setActive] = useState<number | null>(null);
+  const [active, setActive] = useState<number | null>(0);
 
   return (
     <section id="projects" className="bg-[var(--dark)] text-white section-pad">
@@ -35,7 +52,6 @@ export default function Team() {
             return (
               <motion.div
                 key={m.name}
-                layout
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -45,104 +61,104 @@ export default function Team() {
                 onMouseLeave={() => setActive(null)}
                 onFocus={() => setActive(i)}
                 onBlur={() => setActive(null)}
-                className="group relative rounded-3xl overflow-hidden border border-white/5 cursor-pointer bg-[var(--dark2)]"
+                className="group relative aspect-[3/5] rounded-[20px] overflow-hidden border border-white/[0.06] cursor-pointer bg-[var(--dark2)]"
               >
-                {/* "dot" back effect: tiny circle at the card's center that
-                    morphs on hover into a dome — rounded at the top, anchored
-                    so it covers the IMAGE (top half of the card) and stops at
-                    the card's vertical middle. Sits behind content so the
-                    image and text stay readable. */}
+                {/* Purple arch — expands from bottom upward on hover */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute left-1/2 z-0 bg-[var(--brand-purple)] transition-[top,width,height,border-radius,opacity] duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+                  className="pointer-events-none absolute left-1/2 z-[1] bg-[var(--brand-purple)] transition-[bottom,width,height,border-radius,opacity] duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
                   style={
                     isActive
                       ? {
-                          // anchor the BOTTOM edge of the shape at the card's
-                          // vertical middle, so the dome sits on top of the
-                          // image. height=200% + huge top-radius makes the
-                          // top a perfect half-circle "dome" while the bottom
-                          // is flat (only top corners are rounded).
-                          top: "50%",
+                          bottom: "82px",
                           width: "175%",
-                          height: "200%",
+                          height: "68%",
                           borderTopLeftRadius: "420px",
                           borderTopRightRadius: "420px",
                           borderBottomLeftRadius: "0px",
                           borderBottomRightRadius: "0px",
-                          transform: "translate(-50%, 0%)",
+                          transform: "translateX(-50%)",
                           opacity: 1,
                         }
                       : {
-                          // resting state: a small dot at the card's center
-                          top: "50%",
-                          width: "24px",
-                          height: "24px",
-                          borderRadius: "260px",
-                          transform: "translate(-50%, -50%)",
+                          bottom: "82px",
+                          width: "0%",
+                          height: "0%",
+                          borderRadius: "0px",
+                          transform: "translateX(-50%)",
                           opacity: 0,
                         }
                   }
                 />
 
-                {/* All card content sits above the dot */}
-                <div className="relative z-10">
-                  <div className="aspect-[4/5] overflow-hidden">
-                    <motion.img
-                      src={m.img}
-                      alt={m.name}
-                      animate={{ scale: isActive ? 1.08 : 1, filter: isActive ? "grayscale(0%)" : "grayscale(35%)" }}
-                      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+                {/* Portrait */}
+                <div className="absolute inset-0 z-[2] overflow-hidden">
+                  <motion.img
+                    src={m.img}
+                    alt={m.name}
+                    animate={{
+                      scale: isActive ? 1.05 : 1,
+                      filter: isActive ? "grayscale(0%) brightness(1)" : "grayscale(100%) brightness(0.85)",
+                    }}
+                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="w-full h-full object-cover object-[center_top]"
+                  />
+                </div>
 
-                  <div className="p-6">
+                {/* Title overlay */}
+                <div className="absolute top-5 left-0 right-0 z-[3] px-5 flex items-baseline gap-2 pointer-events-none">
+                  <motion.span
+                    animate={{ x: isActive ? 8 : 0 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-display font-extrabold text-[clamp(2rem,4.5vw,3.5rem)] leading-none text-[var(--brand-cyan)]"
+                  >
+                    {m.bigTitle}
+                  </motion.span>
+                  {/* <motion.span
+                    animate={{ x: isActive ? -10 : 0 }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                    className="font-display text-[11px] font-bold uppercase tracking-[0.3em] text-white"
+                  >
+                    {m.subRole}
+                  </motion.span> */}
+                </div>
+
+                {/* Social icons — overlay portrait bottom */}
+                <AnimatePresence>
+                  {isActive && (
                     <motion.div
-                      animate={{ color: isActive ? "#fff" : "var(--brand-pink)" }}
-                      transition={{ duration: 0.4 }}
-                      className="text-xs uppercase tracking-[0.2em] font-display"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.4, delay: 0.1 }}
+                      className="absolute left-0 right-0 z-[4] flex justify-center gap-2"
+                      style={{ bottom: "94px" }}
                     >
-                      {m.role}
-                    </motion.div>
-                    <div className="font-display text-2xl mt-1">{m.name}</div>
-                    <p
-                      className={
-                        "text-sm mt-3 leading-relaxed transition-colors duration-500 " +
-                        (isActive ? "text-white/80" : "text-white/65")
-                      }
-                    >
-                      {m.bio}
-                    </p>
-
-                    <div
-                      className={
-                        "mt-4 flex gap-3 transition-colors duration-500 " +
-                        (isActive ? "text-white/80" : "text-white/50")
-                      }
-                    >
-                      <a href="#" className="hover:opacity-100 opacity-90 transition"><LinkedinIcon size={18} /></a>
-                      <a href="#" className="hover:opacity-100 opacity-90 transition"><FacebookIcon size={18} /></a>
-                      <a href="#" className="hover:opacity-100 opacity-90 transition"><InstagramIcon size={18} /></a>
-                      <a href="#" className="hover:opacity-100 opacity-90 transition"><TwitterIcon size={18} /></a>
-                    </div>
-
-                    {/* active label that morphs in when this card is the focused one */}
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.div
-                          key="badge"
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 8 }}
-                          transition={{ duration: 0.35 }}
-                          className="mt-5 inline-flex items-center gap-2 text-xs font-display uppercase tracking-[0.2em] text-white/90"
+                      {[
+                        { Icon: LinkedinIcon, label: "LinkedIn" },
+                        { Icon: FacebookIcon, label: "Facebook" },
+                        { Icon: InstagramIcon, label: "Instagram" },
+                      ].map(({ Icon, label }) => (
+                        <a
+                          key={label}
+                          href="#"
+                          aria-label={label}
+                          className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black transition hover:bg-[var(--brand-purple)] hover:text-white"
                         >
-                          <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                          Featured Member
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                          <Icon size={14} />
+                        </a>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Footer block */}
+                <div className="absolute bottom-0 left-0 right-0 z-[5] rounded-b-[20px] bg-[#0c0c0c]/90 backdrop-blur-sm px-6 py-4 text-center border-t border-white/[0.05]">
+                  <div className="font-display text-lg md:text-xl font-bold text-white leading-tight">
+                    {m.name}
+                  </div>
+                  <div className="mt-1 text-xs md:text-sm text-white/60 font-medium">
+                    {m.footerRole}
                   </div>
                 </div>
               </motion.div>

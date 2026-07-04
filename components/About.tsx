@@ -139,7 +139,7 @@ export default function About() {
                 {/* Purple background circle */}
                 <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-[var(--brand-purple)] -z-10" />
                 <img
-                  src="/images/Untitled-design-1.png"
+                  src="/images/man.png"
                   alt="Muhammad Usman Khan"
                   className="relative z-10 w-full"
                 />
@@ -233,7 +233,7 @@ export default function About() {
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[var(--brand-cyan)]">
                       <img 
-                        src="/images/Untitled-design-1.png" 
+                        src="/images/man.png" 
                         alt="Usman Khan" 
                         className="w-full h-full object-cover"
                       />

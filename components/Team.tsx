@@ -10,7 +10,7 @@ const team = [
     bigTitle: "Founder",
     subRole: "CEO",
     footerRole: "Founder, CEO",
-    img: "/images/Untitled-design-1.png",
+    img: "/images/man.png",
   },
   {
     name: "Dawood Mirza",

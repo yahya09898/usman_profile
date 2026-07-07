@@ -25,7 +25,7 @@ export default function ServicesPage() {
           </p>
         </div>
       </section>
-      <Services />
+      <Services showAllMobile={true} />
       <TestimonialContact />
     </>
   );

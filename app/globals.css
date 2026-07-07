@@ -127,8 +127,8 @@ h1, h2, h3, h4, h5, h6, .font-display {
 }
 
 .section-pad {
-  padding-top: clamp(4rem, 8vw, 8rem);
-  padding-bottom: clamp(4rem, 8vw, 8rem);
+  padding-top: clamp(3rem, 6vw, 8rem);
+  padding-bottom: clamp(3rem, 6vw, 8rem);
 }
 
 .eyebrow {

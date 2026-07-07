@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 
 const services = [
   { title: "Digital Marketing", desc: "End-to-end digital strategy, paid media, and funnel design that turns clicks into customers." },
@@ -13,7 +14,9 @@ const services = [
   { title: "SEO", desc: "Technical SEO, content strategy, and link building that earns rankings — and keeps them." },
 ];
 
-export default function Services() {
+export default function Services({ showAllMobile = false }: { showAllMobile?: boolean }) {
+  const displayedServicesMobile = showAllMobile ? services : services.slice(0, 3);
+
   return (
     <section id="services" className="bg-[#0D0D0D] text-white section-pad relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[var(--brand-cyan)]/10 blur-[120px]" />
@@ -31,7 +34,8 @@ export default function Services() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Desktop: Show all, Mobile: Show limited */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, i) => (
             <motion.div
               key={s.title}
@@ -40,6 +44,29 @@ export default function Services() {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
               whileHover={{ y: -6 }}
+              className="group relative p-7 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[var(--brand-cyan)]/60 transition-all duration-300"
+            >
+              <h3 className="font-display text-xl mb-3">{s.title}</h3>
+              <p className="text-white/65 text-sm leading-relaxed">{s.desc}</p>
+              <a
+                href="/contact"
+                className="mt-6 inline-flex items-center gap-2 text-[var(--brand-cyan)] font-display text-sm uppercase tracking-wider hover:gap-3 transition-all"
+              >
+                Learn More <ArrowUpRight size={16} />
+              </a>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Mobile: Show 3 on homepage, all on services page */}
+        <div className="md:hidden grid grid-cols-1 gap-5">
+          {displayedServicesMobile.map((s, i) => (
+            <motion.div
+              key={s.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group relative p-7 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[var(--brand-cyan)]/60 transition-all duration-300"
             >
               <h3 className="font-display text-xl mb-3">{s.title}</h3>

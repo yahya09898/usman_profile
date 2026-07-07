@@ -45,7 +45,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <a href="/contact" className="btn-primary">Get a Quote</a>
+          <a href="/contact" className="btn-primary">Book A Consultation</a>
         </div>
 
         <button
@@ -60,25 +60,60 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="lg:hidden bg-[#0D0D0D] border-t border-white/10"
+            initial={{ height: 0, opacity: 0, rotateX: -15 }}
+            animate={{ height: "auto", opacity: 1, rotateX: 0 }}
+            exit={{ height: 0, opacity: 0, rotateX: -15 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
+            className="lg:hidden bg-gradient-to-br from-[var(--brand-purple)]/30 via-[var(--dark)] to-[var(--brand-cyan)]/20 border-t border-white/20 overflow-hidden backdrop-blur-2xl shadow-2xl shadow-[var(--brand-purple)]/20"
           >
-            <nav className="flex flex-col px-6 py-6 gap-4 font-display text-base uppercase tracking-wide">
-              {links.map((l) => (
-                <Link
+            <div className="absolute inset-0 bg-gradient-to-r from-[var(--brand-cyan)]/10 via-transparent to-[var(--brand-purple)]/10 animate-pulse" />
+            <nav className="relative flex flex-col px-6 py-6 gap-2 font-display text-base uppercase tracking-wide">
+              {links.map((l, i) => (
+                <motion.div
                   key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="text-white/80 hover:text-[var(--brand-cyan)]"
+                  initial={{ opacity: 0, x: -50, rotateY: -20 }}
+                  animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                  exit={{ opacity: 0, x: 50, rotateY: 20 }}
+                  transition={{ 
+                    delay: i * 0.1, 
+                    duration: 0.5, 
+                    ease: [0.16, 1, 0.3, 1],
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{ scale: 1.05, x: 10 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {l.label}
-                </Link>
+                  <Link
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="block py-3 px-4 text-white/90 hover:text-[var(--brand-cyan)] hover:bg-gradient-to-r hover:from-white/10 hover:to-transparent rounded-lg transition-all duration-300 relative overflow-hidden group"
+                  >
+                    <span className="absolute inset-0 bg-gradient-to-r from-[var(--brand-cyan)]/20 to-[var(--brand-purple)]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <span className="relative z-10">{l.label}</span>
+                  </Link>
+                </motion.div>
               ))}
-              <a href="/contact" onClick={() => setOpen(false)} className="btn-primary mt-4 self-start">
-                Get a Quote
-              </a>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                transition={{ 
+                  delay: links.length * 0.1, 
+                  duration: 0.6,
+                  type: "spring",
+                  stiffness: 120,
+                  damping: 10
+                }}
+                whileHover={{ scale: 1.08, rotate: [0, -1, 1, -1, 0] }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <a href="/contact" onClick={() => setOpen(false)} className="btn-primary mt-4 block text-center relative overflow-hidden group">
+                  <span className="absolute inset-0 bg-gradient-to-r from-[var(--brand-cyan)] to-[var(--brand-purple)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="relative z-10">Book A Consultation</span>
+                </a>
+              </motion.div>
             </nav>
           </motion.div>
         )}

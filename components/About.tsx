@@ -6,9 +6,9 @@ import { Plus, Minus } from "lucide-react";
 import Image from "next/image";
 
 const items = [
-  { n: "01", title: "Our History", body: "Founded in 2010 as a small New York consultancy, we've grown into a global agency with offices in New York, London, and Sydney — from three founders to a fifty-plus team of strategists, designers, and engineers." },
-  { n: "02", title: "Our Mission", body: "Empower businesses of every size with strategies rooted in clarity, creativity, and measurable excellence. We don't ship vanity metrics — we ship growth." },
-  { n: "03", title: "Our Vision", body: "Reshape what digital marketing looks like in the next decade: sustainable, transparent, AI-augmented, and built on long-term partnerships rather than retainer churn." },
+  { n: "01", title: "Our History", body: "Founded in 2024, The Creative Clowns was built with one goal: to help businesses stand out in the digital world through creativity and strategy. What started as a passionate team of marketers and creators has grown into a full-service digital marketing agency dedicated to delivering impactful campaigns, compelling content, and measurable results. Today, we partner with businesses of all sizes to build strong brands and meaningful digital experiences." },
+  { n: "02", title: "Our Mission", body: "Our mission is to empower businesses with innovative digital marketing solutions that drive growth, strengthen brand identity, and create lasting connections with their audiences. We combine creativity, strategy, and data-driven insights to deliver results that matter." },
+  { n: "03", title: "Our Vision", body: "Our vision is to become a globally trusted digital marketing agency recognized for transforming ideas into impactful brands. We aim to inspire innovation, deliver excellence, and help businesses thrive in an ever-evolving digital landscape." },
 ];
 
 const founderTraits = [
@@ -103,102 +103,6 @@ export default function About() {
       {/* Meet The Founder Section */}
       <section className="bg-[var(--dark)] text-white section-pad border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-4"
-          >
-            <span className="eyebrow">About Founder</span>
-            <h2 className="headline-lg">
-              Meet The <span className="text-[var(--brand-cyan)]">Founder</span>
-            </h2>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-white/70 text-lg leading-relaxed max-w-4xl mx-auto text-center mb-16"
-          >
-            <span className="text-white font-semibold">Muhammad Usman Khan</span>, the heart of The Creative Clowns. With a decade of <span className="text-white">digital marketing expertise</span>, Usman's passion for innovation and dedication to clients have guided our journey. His <span className="text-white">strategic vision, client-centered approach, and knack for creative solutions</span> shape our commitment to excellence.
-          </motion.p>
-
-          {/* Founder Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto mb-20"
-          >
-            {/* Left - Image */}
-            <div className="relative">
-              <div className="relative w-full max-w-md mx-auto">
-                {/* Purple background circle */}
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full bg-[var(--brand-purple)] -z-10" />
-                <img
-                  src="/images/man.png"
-                  alt="Muhammad Usman Khan"
-                  className="relative z-10 w-full"
-                />
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
-                  <h3 className="font-display text-4xl md:text-5xl font-bold text-[var(--brand-cyan)] mb-1">Muhammad</h3>
-                  <h3 className="font-display text-4xl md:text-5xl font-bold text-white">Usman Khan</h3>
-                </div>
-              </div>
-            </div>
-
-            {/* Right - Content */}
-            <div className="space-y-8">
-              <p className="text-white/80 text-base leading-relaxed">
-                My name is Muhammad Usman Khan, CEO and Founder of The Creative Clowns. I built this agency with one purpose: to bring smart creativity and bold strategy together in a way that transforms brands. At The Creative Clowns, we don't just make content. We create experiences that engage, inspire, and deliver real results. Our focus is simple: meaningful impact, modern ideas, and a touch of playful brilliance that makes every brand unforgettable. Whether we're starting out or scaling globally, we're here to elevate your presence and help you grow with confidence. Let's create something extraordinary together.
-              </p>
-
-              {/* Traits Grid */}
-              <div className="grid grid-cols-2 gap-4">
-                {founderTraits.map((trait, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + i * 0.1 }}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.05] border border-white/10"
-                  >
-                    <span className="text-[var(--brand-cyan)] text-xl">{trait.icon}</span>
-                    <span className="text-white text-sm font-medium">{trait.label}</span>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Featured In */}
-              <div>
-                <p className="text-white/60 text-sm mb-4">Featured in:</p>
-                <div className="flex flex-wrap gap-4">
-                  {featuredIn.map((brand, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.5 + i * 0.05 }}
-                      className="px-4 py-2 rounded-lg bg-white/[0.05] border border-white/10"
-                    >
-                      <Image
-                        src={brand.img}
-                        alt={brand.name}
-                        width={80}
-                        height={40}
-                        className="object-contain opacity-70 hover:opacity-100 transition"
-                      />
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
 
           {/* Message from Founder */}
           <motion.div
@@ -209,13 +113,18 @@ export default function About() {
             className="max-w-4xl mx-auto mt-20"
           >
             <div className="relative p-8 md:p-12 rounded-3xl bg-gradient-to-br from-[var(--brand-purple)]/10 to-[var(--brand-cyan)]/5 border border-white/10">
-              {/* Quote Icon */}
-              <div className="absolute top-6 left-6 text-[var(--brand-cyan)]/20 text-6xl font-serif leading-none">"</div>
+              {/* Quote Icon - Opening */}
+              {/* <div className="absolute top-6 left-6 text-[var(--brand-cyan)]/20 text-6xl font-serif leading-none">"</div> */}
+              
+              {/* Quote Icon - Closing */}
+              {/* <div className="absolute bottom-6 right-6 text-[var(--brand-cyan)]/20 text-6xl font-serif leading-none">"</div> */}
               
               <div className="relative z-10">
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-6">
-                  Message from the <span className="text-[var(--brand-cyan)]">Founder</span>
+                  Message from the <span className="text-[var(--brand-cyan)]">CEO</span>
                 </h3>
+              {/* <div className="absolute top- left-6 text-[var(--brand-cyan)]/20 text-6xl font-serif leading-none">"</div> */}
+
                 
                 <div className="space-y-4 text-white/80 leading-relaxed">
                   <p className="text-lg font-semibold text-white">

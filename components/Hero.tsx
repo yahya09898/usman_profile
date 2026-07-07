@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
 
 export default function Hero() {
-  const lines = ["The", "Best", "Digital", "Marketing", "Agency."];
+  const lines = ["Digital", "Marketing", "Agency."];
 
   return (
     <section id="home" className="relative min-h-screen bg-[#0D0D0D] overflow-hidden pt-32 pb-20">
@@ -21,7 +21,7 @@ export default function Hero() {
               transition={{ duration: 0.6 }}
               className="eyebrow"
             >
-              ✦ #1 Digital Marketing Agency in Asia
+              {/* ✦ #1 Digital Marketing Agency in Asia */}
             </motion.span>
 
             <h1 className="font-display text-white">
@@ -64,14 +64,14 @@ export default function Hero() {
               <a href="/services" className="btn-outline">
                 Our Services
               </a>
-              <div className="flex items-center gap-2 text-white/60 text-sm">
+              {/* <div className="flex items-center gap-2 text-white/60 text-sm">
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} size={14} className="fill-[var(--brand-cyan)] text-[var(--brand-cyan)]" />
                   ))}
                 </div>
                 200+ 5-Star Reviews
-              </div>
+              </div> */}
             </motion.div>
           </div>
 
@@ -82,15 +82,15 @@ export default function Hero() {
             className="lg:col-span-5 relative h-[500px] hidden lg:block"
           >
             <div className="absolute top-0 right-0 w-72 h-80 rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-              <img src="/images/tVDg230sxN3guk1uVhxlFkIu1s.png" alt="" className="w-full h-full object-cover" />
+              <img src="images/world.jpg" alt="" className="w-full h-full object-cover" />
             </div>
             <div className="absolute bottom-0 left-0 w-64 h-72 rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-              <img src="/images/dUseUtuxWZALl1W4o3xjq8KWc.jpg" alt="" className="w-full h-full object-cover" />
+              <img src="images/marketing.jpg" alt="" className="w-full h-full object-cover" />
             </div>
             <div className="absolute top-40 left-10 w-40 h-40 rounded-full bg-[var(--brand-cyan)]/30 blur-2xl" />
             <div className="absolute bottom-10 right-10 px-5 py-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
-              <div className="text-xs uppercase tracking-widest text-[var(--brand-cyan)] font-display">Featured In</div>
-              <div className="text-white font-display text-lg mt-1">Forbes • Inc. • Yahoo</div>
+              {/* <div className="text-xs uppercase tracking-widest text-[var(--brand-cyan)] font-display">Featured In</div> */}
+              <div className="text-white font-display text-lg mt-1">Marketing That Works</div>
             </div>
           </motion.div>
         </div>

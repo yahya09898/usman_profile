@@ -11,20 +11,35 @@ const team = [
     subRole: "CEO",
     footerRole: "Founder, CEO",
     img: "/images/man.png",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/muhamad-usman-khan/",
+      facebook: "https://www.facebook.com/profile.php?id=61566505257149",
+      instagram: "https://www.instagram.com/usman.digitalcreations/?hl=en",
+    },
   },
   {
     name: "Dawood Mirza",
-    bigTitle: "COO",
-    subRole: "CFO | CMO",
-    footerRole: "COO | CFO | CMO",
+    bigTitle: "Co Founder",
+    subRole: "",
+    footerRole: "Co Founder, CFO",
     img: "/images/1.png",
+    socials: {
+      linkedin: "https://pk.linkedin.com/in/mdawoodmirzaofficial",
+      facebook: "https://www.facebook.com/share/1JvXq3pt91/",
+      instagram: "https://www.instagram.com/dawoodmirzaofficial/?hl=en",
+    },
   },
   {
     name: "M. Hasaan",
-    bigTitle: "Director",
+    bigTitle: "Co Founder",
     subRole: "",
-    footerRole: "Creative Director",
+    footerRole: "Co Founder, CFO ",
     img: "/images/Untitled-design-2.png",
+    socials: {
+      linkedin: "#",
+      facebook: "#",
+      instagram: "https://www.instagram.com/1mhasaan/?hl=en",
+    },
   },
 ];
 
@@ -61,8 +76,9 @@ export default function Team() {
                 onMouseLeave={() => setActive(null)}
                 onFocus={() => setActive(i)}
                 onBlur={() => setActive(null)}
-                className="group relative aspect-[3/5] rounded-[20px] overflow-hidden border border-white/[0.06] cursor-pointer bg-[var(--dark2)]"
+                className="group relative aspect-[3/5] rounded-[20px] border border-white/[0.06] cursor-pointer bg-[var(--dark2)]"
               >
+                <div className="absolute inset-0 rounded-[20px] overflow-hidden">
                 {/* Purple arch — expands from bottom upward on hover */}
                 <div
                   aria-hidden
@@ -91,8 +107,21 @@ export default function Team() {
                   }
                 />
 
+                {/* Title overlay - behind image, raises up above card on hover */}
+                <motion.div
+                  animate={{ 
+                    y: isActive ? -80 : 0,
+                  }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute top-24 left-5 z-[2] pointer-events-none"
+                >
+                  <span className="font-display font-extrabold text-[clamp(1.75rem,3.5vw,2.5rem)] leading-none text-[var(--brand-cyan)]">
+                    {m.bigTitle}
+                  </span>
+                </motion.div>
+
                 {/* Portrait */}
-                <div className="absolute inset-0 z-[2] overflow-hidden">
+                <div className="absolute inset-0 z-[3]">
                   <motion.img
                     src={m.img}
                     alt={m.name}
@@ -101,26 +130,8 @@ export default function Team() {
                       filter: isActive ? "grayscale(0%) brightness(1)" : "grayscale(100%) brightness(0.85)",
                     }}
                     transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-full h-full object-cover object-[center_top]"
+                    className="w-full h-full object-contain object-center"
                   />
-                </div>
-
-                {/* Title overlay */}
-                <div className="absolute top-5 left-0 right-0 z-[3] px-5 flex items-baseline gap-2 pointer-events-none">
-                  <motion.span
-                    animate={{ x: isActive ? 8 : 0 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="font-display font-extrabold text-[clamp(2rem,4.5vw,3.5rem)] leading-none text-[var(--brand-cyan)]"
-                  >
-                    {m.bigTitle}
-                  </motion.span>
-                  {/* <motion.span
-                    animate={{ x: isActive ? -10 : 0 }}
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    className="font-display text-[11px] font-bold uppercase tracking-[0.3em] text-white"
-                  >
-                    {m.subRole}
-                  </motion.span> */}
                 </div>
 
                 {/* Social icons — overlay portrait bottom */}
@@ -134,20 +145,33 @@ export default function Team() {
                       className="absolute left-0 right-0 z-[4] flex justify-center gap-2"
                       style={{ bottom: "94px" }}
                     >
-                      {[
-                        { Icon: LinkedinIcon, label: "LinkedIn" },
-                        { Icon: FacebookIcon, label: "Facebook" },
-                        { Icon: InstagramIcon, label: "Instagram" },
-                      ].map(({ Icon, label }) => (
-                        <a
-                          key={label}
-                          href="#"
-                          aria-label={label}
-                          className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black transition hover:bg-[var(--brand-purple)] hover:text-white"
-                        >
-                          <Icon size={14} />
-                        </a>
-                      ))}
+                      <a
+                        href={m.socials.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="LinkedIn"
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black transition hover:bg-[var(--brand-purple)] hover:text-white"
+                      >
+                        <LinkedinIcon size={14} />
+                      </a>
+                      <a
+                        href={m.socials.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Facebook"
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black transition hover:bg-[var(--brand-purple)] hover:text-white"
+                      >
+                        <FacebookIcon size={14} />
+                      </a>
+                      <a
+                        href={m.socials.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black transition hover:bg-[var(--brand-purple)] hover:text-white"
+                      >
+                        <InstagramIcon size={14} />
+                      </a>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -160,6 +184,7 @@ export default function Team() {
                   <div className="mt-1 text-xs md:text-sm text-white/60 font-medium">
                     {m.footerRole}
                   </div>
+                </div>
                 </div>
               </motion.div>
             );

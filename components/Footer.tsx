@@ -49,8 +49,8 @@ export default function Footer() {
             <h4 className="font-display text-lg mb-5">Get in touch</h4>
             <ul className="space-y-3 text-white/65 text-sm">
               <li>info@creativeclowns.com</li>
-              <li>+1 (555) 123-4567</li>
-              <li>123 Main Street<br />Anytown, USA 2141</li>
+              <li>0321 4614116</li>
+              <li>Block 3 Sector B2<br />Township Lahore, 54770</li>
             </ul>
           </div>
         </div>

@@ -81,7 +81,7 @@ const badges = [
 const float = (delay = 0) => ({
   animate: {
     y: [0, -8, 0],
-    transition: { duration: 3 + delay * 0.5, repeat: Infinity, ease: "easeInOut", delay },
+    transition: { duration: 3 + delay * 0.5, repeat: Infinity, ease: "easeInOut" as const, delay },
   },
 });
 
@@ -329,9 +329,12 @@ export default function HeroGraphic() {
         className="absolute z-20"
         style={{ bottom: "3%", left: "2%" }}
         initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.9, type: "spring" }}
-        {...float(1.2)}
+        animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+        transition={{
+          opacity: { duration: 0.6, delay: 0.9, type: "spring" },
+          scale:   { duration: 0.6, delay: 0.9, type: "spring" },
+          y:       { duration: 3.6, repeat: Infinity, ease: "easeInOut" as const, delay: 1.2 },
+        }}
       >
         <div style={{ position: "relative", width: 64, height: 64 }}>
           {/* outer ring */}
@@ -387,9 +390,12 @@ export default function HeroGraphic() {
         className="absolute z-20"
         style={{ bottom: "0%", right: "5%" }}
         initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 1, type: "spring" }}
-        {...float(0.8)}
+        animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+        transition={{
+          opacity: { duration: 0.6, delay: 1, type: "spring" },
+          scale:   { duration: 0.6, delay: 1, type: "spring" },
+          y:       { duration: 3.4, repeat: Infinity, ease: "easeInOut" as const, delay: 0.8 },
+        }}
       >
         <div style={{ position: "relative", width: 72, height: 72 }}>
           {/* multicolor hair puffs */}
